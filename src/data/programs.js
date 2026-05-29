@@ -3,42 +3,46 @@ import { Globe, Briefcase, Monitor, TrendingUp } from 'lucide-react'
 export const programs = [
   {
     id: 'english',
-    tag: 'Language',
-    title: 'English Language',
+    title: 'VSEC ADULT LITERACY INSTITUTE',
     icon: Globe,
     shortDescription:
-      'Build confidence in everyday communication, business interactions, presentations, and public speaking.',
+      'Learn English with Confidence. Read, Write, and Speak Fluently.',
     fullDescription:
-      'Our English Language program is designed for adults who want to communicate with clarity, confidence, and professionalism. Whether you are navigating the workplace, building a business, or simply want to express yourself better, this program gives you the practical tools to do so. Lessons are taught in real-world contexts — not textbook exercises.',
+      'At VSEC Adult Literacy Institute, we help learner develop confidence in reading, writing, and speaking English through practical, easy-to-understand, and interactive learning methods. Whether you are looking to improve communication skills for work, education, business, or everyday life, our programs are designed to support learners at every level. We are committed to creating a supportive learning environment that promotes personal growth, confidence, and lifelong learning.',
     whoIsItFor:
       'Working adults, entrepreneurs, job seekers, and anyone who wants to communicate more effectively in professional settings.',
     outcomes: [
-      'Speak confidently in business meetings and presentations',
+      'Speak confidently in business meetings and daily conversations',
       'Write professional emails, reports, and proposals',
       'Handle interviews and networking conversations with ease',
       'Build vocabulary relevant to your industry and goals',
     ],
     courses: [
       {
-        title: 'Foundation English',
+        title: 'Adult Literacy',
         description:
-          'Master the core building blocks of English — grammar, sentence structure, and everyday vocabulary — so you can communicate clearly from day one.',
+          'Designed to help adults develop essential reading, writing, and speaking skills in English for everyday communication, personal growth, and career advancement.',
       },
       {
-        title: 'Business Communication',
+        title: 'Functional English',
         description:
-          'Learn how to communicate professionally in workplace contexts: emails, meetings, phone calls, and business correspondence.',
+          'Focuses on practical English skills used in daily life, workplaces, businesses, and social interactions to improve confidence and communication.',
       },
       {
-        title: 'Public Speaking & Presentation',
+        title: 'WASSCE Preparation',
         description:
-          'Develop the confidence and technique to speak in front of groups, present ideas compellingly, and handle questions under pressure.',
+          'Structured lessons and exam preparation support for WASSCE candidates, covering key subjects and test-taking strategies to help students succeed.',
       },
       {
-        title: 'Professional Writing',
+        title: 'BECE Preparation',
         description:
-          'Produce clear, persuasive written content — from formal reports and proposals to professional emails and cover letters.',
+          'Structured lessons and exam preparation support for BECE candidates, covering key subjects and test-taking strategies to help students succeed.',
       },
+      {
+        title: 'Communication Skills for Professionals',
+        description:
+          'Develops effective verbal and written communication skills, including public speaking, confidence building, interpersonal communication, and professional interaction.',
+      }
     ],
     testimonial: {
       quote:
@@ -50,42 +54,51 @@ export const programs = [
   },
   {
     id: 'business',
-    tag: 'Business',
-    title: 'Business Fundamentals',
+    title: 'VSEC LANGUAGE ACADEMY',
     icon: Briefcase,
     shortDescription:
-      'Gain practical business acumen — from entrepreneurship and marketing to finance and operations.',
+      'Learn Languages. Build Confidence. Connect with the World.',
     fullDescription:
-      'The Business Fundamentals program gives you the knowledge that used to be locked behind expensive degrees. You will learn how businesses work, how to start and grow your own, and how to make smart decisions with money and people. Every lesson is grounded in practical application, not theory.',
+      'VSEC Language Academy offers practical language learning programs designed to help you communicate confidently in English, French, and other languages. Our courses focus on real-world communication skills for work, travel, and everyday life. Whether you want to improve your English for business, learn French for travel, or pick up another language for personal growth, our supportive learning environment and experienced instructors will help you achieve your goals.',
     whoIsItFor:
-      'Aspiring entrepreneurs, small business owners, career changers, and anyone who wants to understand how business really works.',
+      'Professionals, Students, Migrants, International applicants',
     outcomes: [
-      'Understand how to start, plan, and run a business',
-      'Read financial statements and make informed money decisions',
-      'Build and execute a basic marketing and sales strategy',
-      'Lead teams and manage operations with confidence',
+      'Communicate confidently in spoken English in everyday, academic, and professional settings.',
+      'Read and understand English texts with improved comprehension and vocabulary.',
+      'Write clear, correct, and well-structured sentences, emails, and short documents.',
+      'Apply effective communication skills in interviews, presentations, and workplace interactions.',
     ],
     courses: [
       {
-        title: 'Introduction to Entrepreneurship',
+        title: 'English as a Second Language (ESL)',
         description:
-          'Learn the mindset, process, and practical steps behind starting a business — from identifying an opportunity to validating your idea.',
+          'Our ESL program is designed to help non-native English speakers build strong foundational skills in listening, speaking, reading, and writing. Learners improve everyday communication, expand vocabulary, and gain confidence using English in academic, professional, and social settings.',
       },
       {
-        title: 'Marketing & Sales Basics',
+        title: 'IELTS Preparation',
         description:
-          'Understand how to attract customers, communicate your value, and convert interest into sales using simple, proven strategies.',
+          'This course equips students with the strategies and skills needed to achieve high scores in the IELTS exam. It focuses on all four modules—Listening, Reading, Writing, and Speaking—while providing practice tests, time management techniques, and exam-focused coaching.',
       },
       {
-        title: 'Financial Literacy for Business',
+        title: 'TOEFL Preparation',
         description:
-          'Read and interpret financial statements, manage cash flow, set prices, and make decisions that keep your business financially healthy.',
+          'Our TOEFL program prepares students for success in the TOEFL iBT exam by strengthening academic English skills. It emphasizes reading comprehension, lecture-based listening, structured writing, and fluent speaking required for university admission abroad.',
       },
       {
-        title: 'Leadership & Management',
+        title: 'Business English',
         description:
-          'Develop the people skills, decision-making habits, and management frameworks that effective leaders use every day.',
+          'This course helps professionals develop the language skills needed in corporate environments. It covers business communication, email writing, presentations, meetings, negotiations, and professional vocabulary to improve workplace effectiveness and confidence.',
       },
+      {
+        title: 'Public speaking',
+        description:
+          'The Public Speaking course builds confidence and clarity in verbal communication. Learners practice speech delivery, audience engagement, storytelling techniques, and presentation skills to speak effectively in formal and informal settings.',
+      },
+      {
+        title: 'Accent Reduction',
+        description:
+          'This program helps learners improve pronunciation and reduce strong first-language influence when speaking English. It focuses on clarity, intonation, rhythm, and speech patterns to make communication more natural and easily understood by global audiences.',
+      }
     ],
     testimonial: {
       quote:
@@ -97,7 +110,6 @@ export const programs = [
   },
   {
     id: 'it',
-    tag: 'Technology',
     title: 'Information Technology',
     icon: Monitor,
     shortDescription:

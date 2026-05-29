@@ -24,7 +24,7 @@ export default function Programs() {
             className="text-lg leading-relaxed"
             style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}
           >
-            Four focused program areas designed to give you real, applicable skills
+            Seven focused program areas designed to give you real, applicable skills
             that accelerate your career and business.
           </p>
         </div>
