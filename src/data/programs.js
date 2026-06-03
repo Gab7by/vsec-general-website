@@ -110,40 +110,40 @@ export const programs = [
   },
   {
     id: 'it',
-    title: 'Information Technology',
+    title: 'VSEC CORPORATE TRAINING SOLUTIONS',
     icon: Monitor,
     shortDescription:
-      "Learn in-demand digital skills that open doors across every industry in today's tech-driven world.",
+      "Transforming People, Strengthening Organizations.",
     fullDescription:
-      'You do not need to be a programmer to thrive in a digital world — but you do need to understand technology. Our IT program teaches you the digital skills that every modern professional needs: how to use essential tools, understand data, and apply technology to solve real business problems.',
+      'VSEC Corporate Training Solutions provides professional training programs designed to enhance workplace performance, communication, leadership, and productivity. We equip organizations and their teams with practical skills and knowledge to drive growth, improve efficiency, and achieve business success.',
     whoIsItFor:
-      'Adults new to technology, professionals looking to upskill, business owners wanting to leverage digital tools, and career changers entering tech-adjacent roles.',
+      'Churches, Banks, NGOs, Hospitals, Government institutions, SMEs',
     outcomes: [
-      'Use computers, software, and the internet with full confidence',
-      'Work effectively with productivity and collaboration tools',
-      'Understand and work with data using spreadsheets and dashboards',
-      'Apply technology to improve business processes and outcomes',
+      'Communicate professionally and effectively in workplace environments.',
+      'Apply leadership and teamwork skills to improve organizational performance.',
+      'Enhance productivity through improved problem-solving and decision-making abilities.',
+      'Demonstrate greater confidence and competence in professional and business interactions.',
     ],
     courses: [
       {
-        title: 'Computer Basics & Digital Literacy',
+        title: 'Business Communication',
         description:
-          'Start from the ground up — learn how computers work, how to navigate operating systems, and how to stay safe online.',
+          'Develop professional communication skills for effective interactions with colleagues, clients, and stakeholders in the workplace.',
       },
       {
-        title: 'Essential Digital Tools',
+        title: 'Customer Service',
         description:
-          'Master the tools professionals use every day: Google Workspace, Microsoft Office, email, calendars, and collaboration platforms.',
+          'Learn how to deliver exceptional customer experiences through effective communication, problem-solving, and relationship-building skills.',
       },
       {
-        title: 'Data Literacy & Spreadsheets',
+        title: 'Leadership communication',
         description:
-          'Learn to collect, organise, analyse, and present data using spreadsheets — a skill valued in virtually every industry.',
+          'Build the communication skills needed to inspire teams, manage change, resolve conflicts, and lead with confidence.',
       },
       {
-        title: 'Technology for Business Growth',
+        title: 'Workplace writing',
         description:
-          'Discover how to use digital marketing tools, e-commerce platforms, automation, and analytics to grow a business online.',
+          'Master the art of writing clear, professional emails, reports, memos, and other business documents for workplace success.',
       },
     ],
     testimonial: {
@@ -157,40 +157,40 @@ export const programs = [
   {
     id: 'professional-dev',
     tag: 'Growth',
-    title: 'Professional Development',
+    title: 'VSEC TEACHER DEVELOPMENT INSTITUTE',
     icon: TrendingUp,
     shortDescription:
-      'Develop the soft skills and professional mindset that employers and clients look for and respect.',
+      'Empowering Educators. Transforming Learning.',
     fullDescription:
-      'Technical knowledge gets you in the door — but professional skills determine how far you go. This program builds the personal and interpersonal competencies that set top performers apart: how you present yourself, manage your time, build relationships, and plan your career with intention.',
+      'VSEC Teacher Development Institute provides high-quality professional development programs for educators, equipping them with modern teaching strategies, classroom management techniques, and instructional skills to enhance student learning and academic excellence.',
     whoIsItFor:
-      'Job seekers, career climbers, new graduates, entrepreneurs, and anyone who wants to show up more professionally and purposefully in their work.',
+      'Teachers, Tutors, Adult educators',
     outcomes: [
-      'Build a compelling personal brand that gets noticed',
-      'Plan and execute a clear career or business development strategy',
-      'Network confidently and build relationships that open doors',
-      'Manage your time, energy, and priorities like a top performer',
+      'Apply modern teaching methods to improve classroom instruction and student engagement.',
+      'Demonstrate effective classroom management skills to create a positive learning environment.',
+      'Design and deliver well-structured lesson plans aligned with learning objectives.',
+      'Use assessment and feedback strategies to support continuous student improvement and academic success.',
     ],
     courses: [
       {
-        title: 'Career Planning & Goal Setting',
+        title: 'Modern Teaching Methodologies',
         description:
-          'Define your professional goals, map out a realistic career path, and build an action plan that keeps you moving forward.',
+          'Focuses on student-centered teaching approaches, active learning strategies, and effective lesson delivery techniques.',
       },
       {
-        title: 'Personal Branding',
+        title: 'Classroom Management and Discipline',
         description:
-          'Learn how to present yourself online and in person — crafting a professional image, LinkedIn profile, and personal narrative that stands out.',
+          'Equips teachers with practical skills to maintain order, manage behavior, and create a positive learning environment.',
       },
       {
-        title: 'Networking & Relationship Building',
+        title: 'Lesson Planning and Curriculum Design',
         description:
-          'Develop the skills to build genuine professional connections, make strong first impressions, and grow a network that supports your goals.',
+          'Trains educators on how to design structured lesson plans and align teaching content with curriculum standards.',
       },
       {
-        title: 'Time Management & Productivity',
+        title: 'Assessment and Evaluation Techniques',
         description:
-          'Master proven frameworks for prioritising tasks, managing energy, avoiding burnout, and getting the right things done consistently.',
+          'Develops skills in designing tests, assessing student performance, and using feedback to improve learning outcomes.',
       },
     ],
     testimonial: {
