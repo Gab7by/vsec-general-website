@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { programs } from '../data/programs'
+import useInView from '../hooks/useInView'
+import image3 from '../assets/images/image_3.jpeg'
 
 export default function Programs() {
+  const [imgRef, imgInView] = useInView()
+
   return (
     <section id="programs" className="py-20" style={{ backgroundColor: 'var(--color-background)' }}>
       <div className="section">
@@ -100,6 +104,22 @@ export default function Programs() {
               </div>
             )
           })}
+        </div>
+        {/* Section image */}
+        <div
+          ref={imgRef}
+          className="w-full mt-12 rounded-2xl overflow-hidden"
+          style={{
+            opacity: imgInView ? 1 : 0,
+            transform: imgInView ? 'translateY(0)' : 'translateY(48px)',
+            transition: 'opacity 0.7s ease, transform 0.7s ease',
+          }}
+        >
+          <img
+            src={image3}
+            alt="VSEC learning environment"
+            className="w-full aspect-video object-cover"
+          />
         </div>
       </div>
     </section>

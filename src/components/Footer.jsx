@@ -1,6 +1,6 @@
 const links = {
   Programs: ['English Language', 'Business Fundamentals', 'Information Technology', 'Professional Development'],
-  Company: ['About VSEC', 'Our Mission', 'Testimonials', 'Contact Us'],
+  Company: ['About VSEC', 'Our Mission', 'Testimonials'],
   Support: ['FAQ', 'Enrollment Guide', 'Student Portal', 'Privacy Policy'],
 }
 
@@ -14,32 +14,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center"
-                style={{ backgroundColor: 'var(--color-gold)' }}
-              >
-                <span
-                  className="font-black text-sm"
-                  style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
-                >
-                  V
-                </span>
-              </div>
-              <div className="flex flex-col leading-none">
-                <span
-                  className="font-black text-base tracking-wide text-white"
-                  style={{ fontFamily: 'var(--font-heading)' }}
-                >
-                  VSEC
-                </span>
-                <span
-                  className="text-[10px] font-medium tracking-widest uppercase"
-                  style={{ fontFamily: 'var(--font-body)', color: 'var(--color-gold)' }}
-                >
-                  Education
-                </span>
-              </div>
+            <div className="mb-4">
+              <img src="/vsec-logo.png" alt="VSEC Logo" className="h-20 w-auto object-contain" />
             </div>
             <p
               className="text-sm leading-relaxed mb-5"
@@ -49,11 +25,18 @@ export default function Footer() {
               modern education — providing second chances and real transformation.
             </p>
             <a
-              href="mailto:info@vsec.edu"
-              className="text-sm transition-colors duration-200 cursor-pointer"
+              href="mailto:vseccollege@gmail.com"
+              className="text-sm transition-colors duration-200 cursor-pointer block mb-2"
               style={{ fontFamily: 'var(--font-body)', color: 'var(--color-gold)' }}
             >
-              info@vsec.edu
+              vseccollege@gmail.com
+            </a>
+            <a
+              href="/contact"
+              className="text-sm transition-colors duration-200 cursor-pointer hover:text-white"
+              style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.55)' }}
+            >
+              Contact Us →
             </a>
           </div>
 

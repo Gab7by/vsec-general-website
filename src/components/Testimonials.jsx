@@ -1,27 +1,7 @@
-import { Quote } from 'lucide-react'
-
 const testimonials = [
-  {
-    quote:
-      'VSEC completely changed how I communicate with clients. The Business English course gave me the confidence to present in meetings I used to avoid.',
-    name: 'Abena Mensah',
-    role: 'Entrepreneur & Small Business Owner',
-    initials: 'AM',
-  },
-  {
-    quote:
-      "I never had the chance to go to university, but VSEC gave me access to real business knowledge. I now run my own consultancy thanks to what I learned here.",
-    name: 'Kwame Asante',
-    role: 'Business Consultant',
-    initials: 'KA',
-  },
-  {
-    quote:
-      'The IT fundamentals course opened entirely new doors for me. I was able to transition into a digital marketing role I never thought was possible.',
-    name: 'Efua Boateng',
-    role: 'Digital Marketing Specialist',
-    initials: 'EB',
-  },
+  { videoUrl: 'https://www.youtube.com/embed/keP1vOZ5UwU' },
+  { videoUrl: 'https://www.youtube.com/embed/R96Xlx_IdBM' },
+  { videoUrl: 'https://www.youtube.com/embed/BOWSmJwWe7U' },
 ]
 
 export default function Testimonials() {
@@ -51,66 +31,22 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonial cards */}
+        {/* Video testimonial cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map(({ quote, name, role, initials }) => (
+          {testimonials.map(({ videoUrl }, i) => (
             <div
-              key={name}
-              className="relative rounded-2xl p-7 flex flex-col gap-5 border transition-shadow duration-200 hover:shadow-lg"
-              style={{
-                borderColor: 'var(--color-border)',
-                boxShadow: 'var(--shadow-sm)',
-              }}
+              key={i}
+              className="rounded-2xl overflow-hidden border transition-shadow duration-200 hover:shadow-lg"
+              style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-sm)' }}
             >
-              {/* Gold quote accent */}
-              <Quote
-                size={28}
-                strokeWidth={1.5}
-                aria-hidden="true"
-                style={{ color: 'var(--color-gold)', opacity: 0.7 }}
-              />
-
-              {/* Quote text */}
-              <p
-                className="leading-relaxed flex-1 italic"
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.95rem',
-                  color: 'var(--color-text)',
-                }}
-              >
-                "{quote}"
-              </p>
-
-              {/* Author */}
-              <div
-                className="flex items-center gap-3 pt-4 border-t"
-                style={{ borderColor: 'var(--color-border)' }}
-              >
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0 text-white"
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    backgroundColor: 'var(--color-primary)',
-                  }}
-                  aria-hidden="true"
-                >
-                  {initials}
-                </div>
-                <div>
-                  <p
-                    className="font-bold text-sm"
-                    style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
-                  >
-                    {name}
-                  </p>
-                  <p
-                    className="text-xs"
-                    style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}
-                  >
-                    {role}
-                  </p>
-                </div>
+              <div className="aspect-video">
+                <iframe
+                  src={videoUrl}
+                  title={`Student testimonial ${i + 1}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
               </div>
             </div>
           ))}

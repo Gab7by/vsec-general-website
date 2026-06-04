@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'Courses', to: '/courses', type: 'route' },
   { label: 'About', to: '/#about', type: 'anchor' },
   { label: 'Testimonials', to: '/#testimonials', type: 'anchor' },
-  { label: 'Contact', to: '/#contact', type: 'anchor' },
+  { label: 'Contact', to: '/contact', type: 'route' },
 ]
 
 const linkClass =
@@ -33,32 +33,8 @@ export default function Navbar() {
     >
       <nav className="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 cursor-pointer">
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center"
-            style={{ backgroundColor: 'var(--color-primary)' }}
-          >
-            <span
-              className="text-white font-black text-sm tracking-tight"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              V
-            </span>
-          </div>
-          <div className="flex flex-col leading-none">
-            <span
-              className="font-black text-base tracking-wide"
-              style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
-            >
-              VSEC
-            </span>
-            <span
-              className="text-[10px] font-medium tracking-widest uppercase"
-              style={{ fontFamily: 'var(--font-body)', color: 'var(--color-gold)' }}
-            >
-              Education
-            </span>
-          </div>
+        <Link to="/" className="flex items-center cursor-pointer">
+          <img src="/vsec-logo.png" alt="VSEC Logo" className="h-14 w-auto object-contain" />
         </Link>
 
         {/* Desktop links */}

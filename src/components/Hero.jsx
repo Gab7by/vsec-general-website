@@ -1,4 +1,5 @@
 import { ArrowRight, PlayCircle } from 'lucide-react'
+import heroBg from '../assets/images/image_3.jpeg'
 
 export default function Hero() {
   return (
@@ -6,8 +7,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden"
       style={{
-        // TODO: replace with real VSEC group photo
-        backgroundImage: "url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&q=80')",
+        backgroundImage: `url(${heroBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
@@ -70,17 +70,17 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 text-white"
+            className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-1 text-white"
             style={{ fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}
           >
-            Unlock Your
+            Upgrade
             <span
               className="block"
               style={{ color: 'var(--color-gold)' }}
             >
-              Professional
+              Yourself !!
             </span>
-            Potential
+    
           </h1>
 
           {/* Subtext */}

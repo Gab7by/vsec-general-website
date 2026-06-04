@@ -1,4 +1,6 @@
 import { Users, Clock, Award, BookOpen } from 'lucide-react'
+import useInView from '../hooks/useInView'
+import image2 from '../assets/images/image_2.jpeg'
 
 const reasons = [
   {
@@ -28,6 +30,8 @@ const reasons = [
 ]
 
 export default function WhyVsec() {
+  const [imgRef, imgInView] = useInView()
+
   return (
     <section id="about" className="py-20 bg-white">
       <div className="section">
@@ -54,6 +58,23 @@ export default function WhyVsec() {
             We believe every person deserves access to quality education and the
             opportunity to grow professionally — regardless of their background.
           </p>
+        </div>
+
+        {/* Section image */}
+        <div
+          ref={imgRef}
+          className="w-full mb-12 rounded-2xl overflow-hidden"
+          style={{
+            opacity: imgInView ? 1 : 0,
+            transform: imgInView ? 'translateY(0)' : 'translateY(48px)',
+            transition: 'opacity 0.7s ease, transform 0.7s ease',
+          }}
+        >
+          <img
+            src={image2}
+            alt="VSEC students in a learning environment"
+            className="w-full aspect-video object-cover"
+          />
         </div>
 
         {/* Cards grid */}
