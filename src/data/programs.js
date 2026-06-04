@@ -1,4 +1,4 @@
-import { Globe, Briefcase, Monitor, TrendingUp } from 'lucide-react'
+import { Globe, Briefcase, Monitor, TrendingUp, BookOpen, Users, Award } from 'lucide-react'
 
 export const programs = [
   {
@@ -199,6 +199,85 @@ export const programs = [
       name: 'Kofi Darkwa',
       role: 'Operations Manager',
       initials: 'KD',
+    },
+  },
+  {
+    id: 'program-5',
+    title: 'VSEC STUDY ABROAD & EDUCATIONAL CONSULTING',
+    icon: BookOpen,
+    shortDescription: 'Your Pathway to Global Education Success.',
+    fullDescription: 'VSEC Study Abroad & Educational Consulting supports students in accessing quality education opportunities both locally and internationally. We provide professional guidance on school selection, admissions, scholarships, visa processing, and academic planning to help learners achieve their study and career goals.',
+    whoIsItFor: 'Students, graduates, professionals, parents/guardians, scholarship seekers, visa applicants, and anyone interested in accessing local or international educational opportunities.',
+    outcomes: [
+      'Successfully identify and apply to suitable local and international academic programs.',
+      'Demonstrate understanding of admission requirements, scholarship opportunities, and application procedures.',
+      'Prepare strong application documents including personal statements, CVs, and study plans.',
+      'Navigate visa processes and study abroad requirements with confidence and accuracy.',
+    ],
+    courses: [
+      { title: 'Admissions guidance', description: 'Provides step-by-step support in selecting suitable schools and completing application requirements for successful admission.' },
+      { title: 'Visa preparation', description: 'Offers expert assistance in preparing and organizing all necessary documents and requirements for a successful visa application.' },
+      { title: 'IELTS support', description: 'Trains learners in all IELTS components—listening, reading, writing, and speaking—to achieve their target band scores' },
+      { title: 'University placement', description: 'Connects students to reputable local and international universities based on their academic goals and career aspirations.'}
+    ],
+    testimonial: {
+      quote: 'Testimonial quote placeholder.',
+      name: 'Student Name',
+      role: 'Student Role',
+      initials: 'SN',
+    },
+  },
+  {
+    id: 'program-6',
+    title: 'VSEC DIGITAL LEARNING',
+    icon: Users,
+    shortDescription: 'Learn Anytime. Grow Anywhere.',
+    fullDescription: 'VSEC Digital Learning provides accessible and flexible online education programs designed to help learners gain practical digital and academic skills. Through interactive lessons and modern learning tools, we empower students to learn anytime, anywhere, and at their own pace.',
+    whoIsItFor: 'Students, working professionals, job seekers, entrepreneurs, and anyone who wants to learn new skills or improve their knowledge through flexible online learning.',
+    outcomes: [
+      'Demonstrate improved digital and online learning skills for academic and professional use.',
+      'Access and use digital learning platforms effectively for self-paced education.',
+      'Apply newly acquired knowledge and skills to real-life academic or workplace situations.',
+      'Develop confidence in independent learning and continuous personal development.',
+    ],
+    courses: [
+      { title: 'Recorded courses', description: 'Access pre-recorded lessons that allow learners to study at their own pace, anytime and anywhere, with easy review of course materials.' },
+      { title: 'Membership platform', description: 'Join a structured learning community with exclusive access to courses, resources, updates, and continuous learning support.' },
+      { title: 'Mobile learning', description: 'Learn on the go using mobile-friendly content designed for flexible access through smartphones and tablets.' },
+      { title: 'Virtual classes', description: 'Participate in live online classes with instructors, enabling real-time interaction, discussions, and guided learning sessions.'}
+    ],
+    testimonial: {
+      quote: 'Testimonial quote placeholder.',
+      name: 'Student Name',
+      role: 'Student Role',
+      initials: 'SN',
+    },
+  },
+  {
+    id: 'program-7',
+    title: 'VSEC TALENT & LIFE SKILLS ACADEMY',
+    icon: Award,
+    shortDescription: 'Unlock Your Potential. Build Your Future.',
+    fullDescription: 'VSEC Talent & Life Skills Academy is dedicated to helping individuals discover, develop, and refine their natural talents while building essential life skills for personal and professional success. Through practical training and mentorship, we equip learners with confidence, creativity, communication, and problem-solving skills needed to thrive in everyday life and the workplace.',
+    whoIsItFor: 'Children, teenagers, students, young adults, professionals, and anyone who wants to develop their talents, build confidence, and improve essential life skills for personal and career growth.',
+    outcomes: [
+      'Identify and develop personal talents and strengths for creative and professional growth.',
+      'Demonstrate improved confidence, communication, and interpersonal skills.',
+      'Apply practical life skills such as problem-solving, decision-making, and teamwork.',
+      'Build discipline, self-awareness, and a positive mindset for success in daily life and career development.',
+    ],
+    courses: [
+      { title: 'Music', description: 'Develop musical talent through practical training in vocals, instruments, rhythm, and performance skills to build confidence and creativity.' },
+      { title: 'Leadership', description: 'Equips learners with essential leadership skills, including decision-making, teamwork, responsibility, and the ability to inspire others.' },
+      { title: 'Communication', description: 'Focuses on improving speaking, listening, and interpersonal skills for effective expression in personal, academic, and professional settings.' },
+      { title: 'Entrepreneurship', description: 'Teaches practical business skills, innovation, and financial thinking to help learners build and manage successful ventures.'},
+      {title: 'Personal development', description:'Builds self-confidence, discipline, emotional intelligence, and positive habits for overall personal growth and success in life.'}
+    ],
+    testimonial: {
+      quote: 'Testimonial quote placeholder.',
+      name: 'Student Name',
+      role: 'Student Role',
+      initials: 'SN',
     },
   },
 ]
