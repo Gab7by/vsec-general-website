@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function CTABanner() {
   return (
@@ -56,13 +57,13 @@ export default function CTABanner() {
               to invest in themselves.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
+              <Link
+                to="/enroll"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl"
               >
                 Enroll Now
                 <ArrowRight size={18} />
-              </a>
+              </Link>
               <a
                 href="#programs"
                 className="btn-outline-white inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl"

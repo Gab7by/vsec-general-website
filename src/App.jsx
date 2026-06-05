@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import CoursesPage from './pages/CoursesPage'
 import ProgramDetailPage from './pages/ProgramDetailPage'
 import ContactPage from './pages/ContactPage'
+import EnrollPage from './pages/EnrollPage'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/programs/:programId" element={<ProgramDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/enroll" element={<EnrollPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

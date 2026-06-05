@@ -82,7 +82,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <Link
-          to="/courses"
+          to="/enroll"
           className="hidden md:inline-flex btn-primary text-sm px-5 py-2.5 rounded-xl"
         >
           Enroll Now
@@ -126,7 +126,7 @@ export default function Navbar() {
             )
           )}
           <Link
-            to="/courses"
+            to="/enroll"
             onClick={() => setOpen(false)}
             className="block btn-primary text-sm text-center mt-3 rounded-xl justify-center"
           >

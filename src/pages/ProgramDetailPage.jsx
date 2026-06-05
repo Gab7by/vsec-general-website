@@ -81,7 +81,7 @@ export default function ProgramDetailPage() {
                 {program.shortDescription}
               </p>
 
-              <Link to="/#contact" className="btn-primary rounded-xl px-7 py-3.5">
+              <Link to={`/enroll?program=${program.id}`} className="btn-primary rounded-xl px-7 py-3.5">
                 Enroll in This Program
               </Link>
             </div>
