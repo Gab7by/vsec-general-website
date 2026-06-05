@@ -1,17 +1,42 @@
+import { useState, useEffect } from 'react'
 import { ArrowRight, PlayCircle } from 'lucide-react'
-import heroBg from '../assets/images/image_3.jpeg'
+import image1 from '../assets/images/image_1.jpeg'
+import image3 from '../assets/images/image_3.jpeg'
+import image4 from '../assets/images/image_4.jpeg'
+
+const slides = [image1, image3, image4]
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
     >
+      {/* Sliding background images */}
+      {slides.map((src, i) => (
+        <div
+          key={i}
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: `translateX(${(i - current) * 100}%)`,
+            transition: 'transform 700ms ease-in-out',
+          }}
+        />
+      ))}
+
       {/* Royal Blue overlay — keeps text readable over the photo */}
       <div
         aria-hidden="true"
@@ -45,6 +70,22 @@ export default function Hero() {
         className="absolute top-0 left-0 right-0 h-1"
         style={{ backgroundColor: 'var(--color-gold)' }}
       />
+
+      {/* Slide indicator dots */}
+      <div className="absolute bottom-8 right-8 flex gap-2 z-10">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+            style={{
+              backgroundColor: i === current ? 'var(--color-gold)' : 'rgba(255,255,255,0.4)',
+              transform: i === current ? 'scale(1.25)' : 'scale(1)',
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative section w-full">
         <div className="max-w-3xl">
@@ -80,7 +121,7 @@ export default function Hero() {
             >
               Yourself !!
             </span>
-    
+
           </h1>
 
           {/* Subtext */}

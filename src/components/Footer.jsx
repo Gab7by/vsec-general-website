@@ -1,3 +1,5 @@
+import { socials } from './SocialIcons'
+
 const links = {
   Programs: ['English Language', 'Business Fundamentals', 'Information Technology', 'Professional Development'],
   Company: ['About VSEC', 'Our Mission', 'Testimonials'],
@@ -38,6 +40,32 @@ export default function Footer() {
             >
               Contact Us →
             </a>
+            <div className="flex gap-3 mt-5">
+              {socials.map(({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.1)',
+                    color: 'rgba(255,255,255,0.6)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor = 'rgba(212,175,55,0.15)'
+                    e.currentTarget.style.color = 'var(--color-gold)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.6)'
+                  }}
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Link columns */}

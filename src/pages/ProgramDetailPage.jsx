@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Quote, CheckCircle } from 'lucide-react'
+import { ArrowLeft, CheckCircle } from 'lucide-react'
 import { getProgramById } from '../data/programs'
 import CTABanner from '../components/CTABanner'
 
@@ -181,38 +181,6 @@ export default function ProgramDetailPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonial ─────────────────────────────────── */}
-      <section className="py-20 bg-white">
-        <div className="section max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-widest mb-8 text-center"
-            style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}>
-            Student Story
-          </p>
-          <div className="rounded-2xl p-8 md:p-12 border" style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
-            <Quote size={36} strokeWidth={1.5} className="mb-6" style={{ color: 'var(--color-gold)', opacity: 0.7 }} aria-hidden="true" />
-            <p className="text-xl md:text-2xl leading-relaxed italic mb-8"
-              style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text)', lineHeight: '1.7' }}>
-              "{program.testimonial.quote}"
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white"
-                style={{ backgroundColor: 'var(--color-primary)', fontFamily: 'var(--font-heading)' }}
-                aria-hidden="true">
-                {program.testimonial.initials}
-              </div>
-              <div>
-                <p className="font-bold" style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}>
-                  {program.testimonial.name}
-                </p>
-                <p className="text-sm" style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
-                  {program.testimonial.role}
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

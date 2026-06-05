@@ -3,7 +3,6 @@ import WhyVsec from '../components/WhyVsec'
 import Programs from '../components/Programs'
 import Stats from '../components/Stats'
 import Testimonials from '../components/Testimonials'
-import Staff from '../components/Staff'
 import CTABanner from '../components/CTABanner'
 
 export default function HomePage() {
@@ -14,7 +13,6 @@ export default function HomePage() {
       <Programs />
       <Stats />
       <Testimonials />
-      <Staff />
       <CTABanner />
     </main>
   )
