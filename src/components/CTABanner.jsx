@@ -61,7 +61,7 @@ export default function CTABanner() {
                 to="/enroll"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl"
               >
-                Enroll Now
+                Apply Now
                 <ArrowRight size={18} />
               </Link>
               <a

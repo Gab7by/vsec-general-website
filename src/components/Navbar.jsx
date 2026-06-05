@@ -85,7 +85,7 @@ export default function Navbar() {
           to="/enroll"
           className="hidden md:inline-flex btn-primary text-sm px-5 py-2.5 rounded-xl"
         >
-          Enroll Now
+          Apply Now
         </Link>
 
         {/* Mobile menu button */}
@@ -130,7 +130,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="block btn-primary text-sm text-center mt-3 rounded-xl justify-center"
           >
-            Enroll Now
+            Apply Now
           </Link>
         </div>
       )}
