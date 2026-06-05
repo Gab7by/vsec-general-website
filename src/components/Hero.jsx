@@ -19,7 +19,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-20 pb-14 sm:pt-28 sm:pb-20 overflow-hidden"
     >
       {/* Sliding background images */}
       {slides.map((src, i) => (
@@ -72,7 +72,7 @@ export default function Hero() {
       />
 
       {/* Slide indicator dots */}
-      <div className="absolute bottom-8 right-8 flex gap-2 z-10">
+      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 flex gap-2 z-10">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -102,7 +102,7 @@ export default function Hero() {
               style={{ backgroundColor: 'var(--color-gold)' }}
             />
             <span
-              className="text-sm font-semibold tracking-wide"
+              className="text-xs sm:text-sm font-semibold tracking-wide"
               style={{ fontFamily: 'var(--font-body)', color: 'var(--color-gold)' }}
             >
               Professional Education for Adults & Entrepreneurs
@@ -111,7 +111,7 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-1 text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-1 text-white"
             style={{ fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}
           >
             Upgrade
@@ -126,7 +126,7 @@ export default function Hero() {
 
           {/* Subtext */}
           <p
-            className="text-lg md:text-xl mb-10 max-w-2xl leading-relaxed"
+            className="text-base md:text-lg lg:text-xl mb-7 md:mb-10 max-w-2xl leading-relaxed"
             style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.85)' }}
           >
             VSEC empowers adults, entrepreneurs, and aspiring professionals with
@@ -147,7 +147,7 @@ export default function Hero() {
           </div>
 
           {/* Trust micro-stats */}
-          <div className="flex flex-wrap gap-10 mt-16 pt-10 border-t border-white/10">
+          <div className="flex flex-wrap gap-6 sm:gap-10 mt-10 md:mt-16 pt-8 md:pt-10 border-t border-white/10">
             {[
               { value: '500+', label: 'Students Enrolled' },
               { value: '4', label: 'Program Areas' },

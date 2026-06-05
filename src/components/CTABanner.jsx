@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 export default function CTABanner() {
   return (
-    <section className="py-20" style={{ backgroundColor: 'var(--color-background)' }}>
+    <section className="py-12 md:py-20" style={{ backgroundColor: 'var(--color-background)' }}>
       <div className="section">
         <div
-          className="relative rounded-3xl overflow-hidden px-8 py-16 md:px-16 text-center"
+          className="relative rounded-3xl overflow-hidden px-5 py-10 sm:px-8 sm:py-14 md:px-16 md:py-16 text-center"
           style={{
             background: 'linear-gradient(135deg, #0B3D91 0%, #1A52B8 55%, #092E6E 100%)',
           }}
@@ -44,13 +44,13 @@ export default function CTABanner() {
               Start Your Journey Today
             </p>
             <h2
-              className="text-3xl md:text-5xl font-black text-white mb-5 max-w-2xl mx-auto"
+              className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-5 max-w-2xl mx-auto"
               style={{ fontFamily: 'var(--font-heading)', lineHeight: '1.15' }}
             >
               Your Next Chapter Starts at VSEC
             </h2>
             <p
-              className="text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+              className="text-base md:text-lg mb-7 md:mb-10 max-w-xl mx-auto leading-relaxed"
               style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.85)' }}
             >
               Enroll today and join hundreds of adults and entrepreneurs who chose

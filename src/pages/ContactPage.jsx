@@ -21,7 +21,7 @@ export default function ContactPage() {
     <main>
       {/* Page header */}
       <section
-        className="pt-36 pb-20 relative overflow-hidden"
+        className="pt-24 pb-12 md:pt-36 md:pb-20 relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, #0B3D91 0%, #1A52B8 50%, #092E6E 100%)',
         }}
@@ -46,7 +46,7 @@ export default function ContactPage() {
             Contact Us
           </p>
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5"
             style={{ fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}
           >
             Get In Touch
@@ -61,7 +61,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact details */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="section">
 
           {/* Email & Phone cards */}
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <a
                 key={label}
                 href={href}
-                className="card flex flex-col items-center text-center gap-4 py-10 group transition-shadow duration-200 hover:shadow-lg"
+                className="card flex flex-col items-center text-center gap-4 py-7 md:py-10 group transition-shadow duration-200 hover:shadow-lg"
               >
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center"

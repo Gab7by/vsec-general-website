@@ -12,12 +12,12 @@ export default function Footer() {
       {/* Gold top accent */}
       <div className="h-1" style={{ backgroundColor: 'var(--color-gold)' }} aria-hidden="true" />
 
-      <div className="section py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="section py-10 md:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {/* Brand column */}
           <div>
             <div className="mb-4">
-              <img src="/vsec-logo.png" alt="VSEC Logo" className="h-20 w-auto object-contain" />
+              <img src="/vsec-logo.png" alt="VSEC Logo" className="h-14 md:h-20 w-auto object-contain" />
             </div>
             <p
               className="text-sm leading-relaxed mb-5"
@@ -96,7 +96,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="mt-8 pt-6 md:mt-12 md:pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderColor: 'rgba(255,255,255,0.1)' }}
         >
           <p

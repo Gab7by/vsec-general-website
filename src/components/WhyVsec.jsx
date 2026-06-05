@@ -33,10 +33,10 @@ export default function WhyVsec() {
   const [imgRef, imgInView] = useInView()
 
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-14 md:py-20 bg-white">
       <div className="section">
         {/* Header */}
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-8 md:mb-14">
           <p
             className="text-sm font-bold uppercase tracking-widest mb-3"
             style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}

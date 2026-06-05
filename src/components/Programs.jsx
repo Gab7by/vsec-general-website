@@ -8,10 +8,10 @@ export default function Programs() {
   const [imgRef, imgInView] = useInView()
 
   return (
-    <section id="programs" className="py-20" style={{ backgroundColor: 'var(--color-background)' }}>
+    <section id="programs" className="py-14 md:py-20" style={{ backgroundColor: 'var(--color-background)' }}>
       <div className="section">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-14">
           <p
             className="text-sm font-bold uppercase tracking-widest mb-3"
             style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}
@@ -62,7 +62,7 @@ export default function Programs() {
                 {/* Text */}
                 <div>
                   <h3
-                    className="text-xl font-bold mb-2"
+                    className="text-base md:text-xl font-bold mb-2"
                     style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
                   >
                     {program.title}
@@ -76,7 +76,7 @@ export default function Programs() {
                 </div>
 
                 {/* Course highlights */}
-                <ul className="grid grid-cols-2 gap-2">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {program.courses.map(course => (
                     <li
                       key={course.title}

@@ -31,7 +31,7 @@ export default function ProgramDetailPage() {
 
       {/* ── Hero ───────────────────────────────────────── */}
       <section
-        className="relative pt-32 pb-20 overflow-hidden"
+        className="relative pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden"
         style={{ background: 'linear-gradient(150deg, #0B3D91 0%, #1A52B8 50%, #0B3D91 100%)' }}
       >
         {/* Gold top accent */}
@@ -54,7 +54,7 @@ export default function ProgramDetailPage() {
             Back to Home
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-start gap-8 max-w-3xl">
+          <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 max-w-3xl">
             {/* Icon */}
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
               style={{ backgroundColor: 'rgba(212,175,55,0.15)', border: '1px solid rgba(212,175,55,0.3)' }}>
@@ -72,7 +72,7 @@ export default function ProgramDetailPage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-black text-white mb-4"
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4"
                 style={{ fontFamily: 'var(--font-heading)', lineHeight: '1.15' }}>
                 {program.title}
               </h1>
@@ -90,9 +90,9 @@ export default function ProgramDetailPage() {
       </section>
 
       {/* ── Overview ───────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="section">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Left: description */}
             <div>
               <p className="text-sm font-bold uppercase tracking-widest mb-3"
@@ -148,14 +148,14 @@ export default function ProgramDetailPage() {
       </section>
 
       {/* ── Courses in this program ─────────────────────── */}
-      <section className="py-20" style={{ backgroundColor: 'var(--color-background)' }}>
+      <section className="py-12 md:py-20" style={{ backgroundColor: 'var(--color-background)' }}>
         <div className="section">
           <div className="text-center max-w-xl mx-auto mb-12">
             <p className="text-sm font-bold uppercase tracking-widest mb-3"
               style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}>
               Curriculum
             </p>
-            <h2 className="text-3xl md:text-4xl font-black"
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black"
               style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}>
               Courses in This Program
             </h2>

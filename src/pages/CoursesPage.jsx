@@ -22,7 +22,7 @@ export default function CoursesPage() {
 
       {/* ── Hero ───────────────────────────────────────── */}
       <section
-        className="relative pt-32 pb-16 overflow-hidden"
+        className="relative pt-24 pb-10 md:pt-32 md:pb-16 overflow-hidden"
         style={{ background: 'linear-gradient(150deg, #0B3D91 0%, #1A52B8 50%, #092E6E 100%)' }}
       >
         <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: 'var(--color-gold)' }} aria-hidden="true" />
@@ -38,7 +38,7 @@ export default function CoursesPage() {
               {programs.reduce((n, p) => n + p.courses.length, 0)} Courses Available
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-4"
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4"
             style={{ fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
             Explore Our Courses
           </h1>
@@ -73,13 +73,13 @@ export default function CoursesPage() {
       </div>
 
       {/* ── Course grid ────────────────────────────────── */}
-      <div className="section py-16">
+      <div className="section py-10 md:py-16">
         {visiblePrograms.map(program => {
           const Icon = program.icon
           return (
             <div key={program.id} className="mb-14 last:mb-0">
               {/* Program heading */}
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-start justify-between flex-wrap gap-2 mb-4 md:mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center"
                     style={{ backgroundColor: 'var(--color-primary)' }}>
@@ -90,7 +90,7 @@ export default function CoursesPage() {
                       style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}>
                       {program.tag}
                     </p>
-                    <h2 className="text-xl font-black"
+                    <h2 className="text-base sm:text-lg md:text-xl font-black"
                       style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}>
                       {program.title}
                     </h2>

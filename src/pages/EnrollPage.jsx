@@ -1,18 +1,23 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, Home, Plane } from 'lucide-react'
 
 const programs = [
-  { id: 'english',          title: 'VSEC Adult Literacy Institute' },
-  { id: 'business',         title: 'VSEC Language Academy' },
-  { id: 'it',               title: 'VSEC Corporate Training Solutions' },
-  { id: 'professional-dev', title: 'VSEC Teacher Development Institute' },
-  { id: 'program-5',        title: 'VSEC Study Abroad & Educational Consulting' },
-  { id: 'program-6',        title: 'VSEC Digital Learning' },
-  { id: 'program-7',        title: 'VSEC Talent & Life Skills Academy' },
+  { id: 'english',          title: 'VSEC Adult Literacy Institute',              fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
+  { id: 'business',         title: 'VSEC Language Academy',                      fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
+  { id: 'it',               title: 'VSEC Corporate Training Solutions',          fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
+  { id: 'professional-dev', title: 'VSEC Teacher Development Institute',         fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
+  { id: 'program-5',        title: 'VSEC Study Abroad & Educational Consulting', fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
+  { id: 'program-6',        title: 'VSEC Digital Learning',                      fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
+  { id: 'program-7',        title: 'VSEC Talent & Life Skills Academy',          fees: { domestic: 'GHS XXX', international: 'USD XXX' } },
 ]
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykazavk'
+
+const applicantTypes = [
+  { value: 'domestic',      label: 'Domestic',      Icon: Home },
+  { value: 'international', label: 'International', Icon: Plane },
+]
 
 export default function EnrollPage() {
   const [searchParams] = useSearchParams()
@@ -22,6 +27,8 @@ export default function EnrollPage() {
     name: '',
     email: '',
     phone: '',
+    location: '',
+    applicantType: '',
     program: preselected,
     message: '',
   })
@@ -29,6 +36,10 @@ export default function EnrollPage() {
 
   function handleChange(e) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  function setApplicantType(value) {
+    setForm(prev => ({ ...prev, applicantType: value }))
   }
 
   async function handleSubmit(e) {
@@ -50,11 +61,14 @@ export default function EnrollPage() {
     }
   }
 
+  const selectedProgram = programs.find(p => p.id === form.program)
+  const showFee = selectedProgram && form.applicantType
+
   return (
     <main>
       {/* Page header */}
       <section
-        className="pt-36 pb-20 relative overflow-hidden"
+        className="pt-24 pb-12 md:pt-36 md:pb-20 relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #0B3D91 0%, #1A52B8 50%, #092E6E 100%)' }}
       >
         <div
@@ -72,7 +86,7 @@ export default function EnrollPage() {
             Enrollment Application
           </p>
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5"
             style={{ fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}
           >
             Apply Now
@@ -87,7 +101,7 @@ export default function EnrollPage() {
       </section>
 
       {/* Form section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="section max-w-2xl">
           {status === 'success' ? (
             <div
@@ -184,6 +198,69 @@ export default function EnrollPage() {
                   />
                 </div>
 
+                {/* Location */}
+                <div>
+                  <label
+                    htmlFor="location"
+                    className="block text-sm font-bold mb-2"
+                    style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
+                  >
+                    Location (City / Country) <span style={{ color: 'var(--color-gold)' }}>*</span>
+                  </label>
+                  <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    required
+                    value={form.location}
+                    onChange={handleChange}
+                    placeholder="e.g. Accra, Ghana"
+                    className="input"
+                  />
+                </div>
+
+                {/* Applicant Type */}
+                <div>
+                  <p
+                    className="block text-sm font-bold mb-3"
+                    style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
+                  >
+                    Applicant Type <span style={{ color: 'var(--color-gold)' }}>*</span>
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {applicantTypes.map(({ value, label, Icon }) => {
+                      const active = form.applicantType === value
+                      return (
+                        <button
+                          key={value}
+                          type="button"
+                          onClick={() => setApplicantType(value)}
+                          className="flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-xl border-2 font-semibold text-sm transition-all duration-200"
+                          style={{
+                            fontFamily: 'var(--font-heading)',
+                            backgroundColor: active ? 'var(--color-primary)' : 'var(--color-blue-tint)',
+                            borderColor: active ? 'var(--color-primary)' : 'var(--color-border)',
+                            color: active ? '#ffffff' : 'var(--color-text-muted)',
+                          }}
+                        >
+                          <Icon size={17} strokeWidth={2} />
+                          {label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                  {/* Hidden required input to enforce selection */}
+                  <input
+                    type="text"
+                    name="applicantType"
+                    required
+                    value={form.applicantType}
+                    readOnly
+                    className="sr-only"
+                    aria-hidden="true"
+                  />
+                </div>
+
                 {/* Program */}
                 <div>
                   <label
@@ -209,6 +286,33 @@ export default function EnrollPage() {
                   </select>
                 </div>
 
+                {/* Dynamic fee card */}
+                {showFee && (
+                  <div
+                    className="rounded-xl p-5 border-l-4"
+                    style={{ backgroundColor: 'var(--color-blue-tint)', borderColor: 'var(--color-gold)' }}
+                  >
+                    <p
+                      className="text-xs font-bold uppercase tracking-widest mb-1"
+                      style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}
+                    >
+                      Enrollment Fee
+                    </p>
+                    <p
+                      className="text-2xl font-black mb-0.5"
+                      style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
+                    >
+                      {selectedProgram.fees[form.applicantType]}
+                    </p>
+                    <p
+                      className="text-xs capitalize"
+                      style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}
+                    >
+                      {form.applicantType} · {selectedProgram.title}
+                    </p>
+                  </div>
+                )}
+
                 {/* Message */}
                 <div>
                   <label
@@ -216,7 +320,8 @@ export default function EnrollPage() {
                     className="block text-sm font-bold mb-2"
                     style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}
                   >
-                    Additional Information <span className="font-normal" style={{ color: 'var(--color-text-muted)' }}>(optional)</span>
+                    Additional Information{' '}
+                    <span className="font-normal" style={{ color: 'var(--color-text-muted)' }}>(optional)</span>
                   </label>
                   <textarea
                     id="message"

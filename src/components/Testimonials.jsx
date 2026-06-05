@@ -6,10 +6,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 bg-white">
+    <section id="testimonials" className="py-14 md:py-20 bg-white">
       <div className="section">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-14">
           <p
             className="text-sm font-bold uppercase tracking-widest mb-3"
             style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}
@@ -32,7 +32,7 @@ export default function Testimonials() {
         </div>
 
         {/* Video testimonial cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {testimonials.map(({ videoUrl }, i) => (
             <div
               key={i}

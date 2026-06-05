@@ -11,12 +11,12 @@ export default function Stats() {
       {/* Gold top accent line */}
       <div className="h-1" style={{ backgroundColor: 'var(--color-gold)' }} aria-hidden="true" />
 
-      <div className="section py-14">
+      <div className="section py-10 md:py-14">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {stats.map(({ value, label, description }) => (
             <div key={label} className="text-center">
               <p
-                className="text-4xl md:text-5xl font-black mb-1"
+                className="text-3xl md:text-4xl lg:text-5xl font-black mb-1"
                 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}
               >
                 {value}
