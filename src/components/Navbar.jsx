@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'About', to: '/#about', type: 'anchor' },
   { label: 'Testimonials', to: '/#testimonials', type: 'anchor' },
   { label: 'Contact', to: '/contact', type: 'route' },
+  { label: 'Test Your English Level', to: '/english-quiz', type: 'route' },
 ]
 
 const linkClass =
