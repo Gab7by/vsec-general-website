@@ -27,11 +27,11 @@ export default function QuizTeaser() {
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-1"
                 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}>
-                Free Assessment
+                How Good Is Your English?
               </p>
               <h3 className="text-lg sm:text-xl font-black text-white mb-1"
                 style={{ fontFamily: 'var(--font-heading)' }}>
-                Discover Your English Level
+                Check your English level for free now!!
               </h3>
               <p className="text-sm"
                 style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.75)' }}>
