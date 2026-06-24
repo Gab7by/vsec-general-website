@@ -471,6 +471,42 @@ export default function StandaloneQuizPage() {
                 </button>
               </div>
 
+              {/* Contact section */}
+              <div className="mt-2 pt-8 border-t" style={{ borderColor: 'var(--color-border)' }}>
+                <p className="text-xs font-bold uppercase tracking-widest mb-2 text-center"
+                  style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-gold)' }}>
+                  Need Guidance?
+                </p>
+                <p className="text-sm leading-relaxed text-center mb-5"
+                  style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
+                  Have questions about your results or need help choosing the right course?
+                  Our team at VSEC College is ready to guide you through enrolment
+                  and answer any questions you may have.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+                  <a
+                    href="mailto:vseccollege@gmail.com"
+                    className="flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl border text-sm font-semibold transition-colors"
+                    style={{ borderColor: 'var(--color-border)', color: 'var(--color-primary)', fontFamily: 'var(--font-body)', textDecoration: 'none' }}
+                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--color-blue-tint)' }}
+                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent' }}
+                  >
+                    <Mail size={15} />
+                    vseccollege@gmail.com
+                  </a>
+                  <a
+                    href="tel:+233541623059"
+                    className="flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl border text-sm font-semibold transition-colors"
+                    style={{ borderColor: 'var(--color-border)', color: 'var(--color-primary)', fontFamily: 'var(--font-body)', textDecoration: 'none' }}
+                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--color-blue-tint)' }}
+                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent' }}
+                  >
+                    <Phone size={15} />
+                    +233 541 623 059
+                  </a>
+                </div>
+              </div>
+
               <p className="text-xs text-center"
                 style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
                 Powered by{' '}
