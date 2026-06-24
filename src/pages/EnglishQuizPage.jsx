@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, GraduationCap, User, Mail } from 'lucide-react'
+import { ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, GraduationCap, User, Mail, Phone } from 'lucide-react'
 import { questions, levelResults, getLevel } from '../data/quizQuestions'
 
 const FEEDBACK_DELAY = 900
@@ -10,6 +10,7 @@ export default function EnglishQuizPage() {
   const [phase, setPhase] = useState('intro')   // 'intro' | 'collect' | 'quiz' | 'result'
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
+  const [userPhone, setUserPhone] = useState('')
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
   const [selected, setSelected] = useState(null)
@@ -23,6 +24,7 @@ export default function EnglishQuizPage() {
     e.preventDefault()
     setUserName(e.target.elements['fullName'].value.trim())
     setUserEmail(e.target.elements['email'].value.trim())
+    setUserPhone(e.target.elements['phone'].value.trim())
     setCurrent(0)
     setScore(0)
     setSelected(null)
@@ -30,7 +32,7 @@ export default function EnglishQuizPage() {
     setPhase('quiz')
   }
 
-  function sendResults(name, email, finalScore) {
+  function sendResults(name, email, phone, finalScore) {
     const level = levelResults[getLevel(finalScore)]
     const completedAt = new Date().toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'medium' })
     fetch(FORMSPREE_URL, {
@@ -40,6 +42,7 @@ export default function EnglishQuizPage() {
         _subject: `English Test Result — ${name}`,
         'Full Name': name,
         'Participant Email': email,
+        'Phone Number': phone,
         'Score': `${finalScore} / ${questions.length}`,
         'CEFR Level': level.badge,
         'Recommended Course': level.recommendedCourse,
@@ -64,7 +67,7 @@ export default function EnglishQuizPage() {
         if (correct) setScore(newScore)
       } else {
         if (correct) setScore(newScore)
-        sendResults(userName, userEmail, newScore)
+        sendResults(userName, userEmail, userPhone, newScore)
         setPhase('result')
       }
     }, FEEDBACK_DELAY)
@@ -206,6 +209,32 @@ export default function EnglishQuizPage() {
                     name="email"
                     required
                     placeholder="e.g. kwame@example.com"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border text-sm outline-none transition-colors"
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      borderColor: 'var(--color-border)',
+                      backgroundColor: 'var(--color-surface)',
+                      color: 'var(--color-text)',
+                    }}
+                    onFocus={e => { e.target.style.borderColor = 'var(--color-primary)' }}
+                    onBlur={e => { e.target.style.borderColor = 'var(--color-border)' }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-1.5"
+                  style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text)' }}>
+                  Phone Number <span style={{ color: 'var(--color-gold)' }}>*</span>
+                </label>
+                <div className="relative">
+                  <Phone size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                    style={{ color: 'var(--color-text-muted)' }} />
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    placeholder="e.g. +233 24 000 0000"
                     className="w-full pl-10 pr-4 py-3 rounded-xl border text-sm outline-none transition-colors"
                     style={{
                       fontFamily: 'var(--font-body)',
