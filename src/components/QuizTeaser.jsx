@@ -35,7 +35,7 @@ export default function QuizTeaser() {
               </h3>
               <p className="text-sm"
                 style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.75)' }}>
-                20 questions · Instant CEFR result · Personalised course recommendation
+                40 questions · Instant CEFR result · Personalised course recommendation
               </p>
             </div>
           </div>

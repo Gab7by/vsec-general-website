@@ -188,6 +188,198 @@ export const questions = [
     ],
     answer: 'Both A and B are acceptable in formal writing.',
   },
+
+  // ── IELTS-Style Questions ──────────────────────────────────────────────────
+
+  // ── A1 — Notice & sign reading ────────────────────────────────────────────
+  {
+    id: 21,
+    level: 'a1',
+    question: 'Read the notice: "The library opens at 9am on weekdays and at 11am on weekends. It closes at 6pm every day." When does the library open on Saturday?',
+    options: ['9am', '11am', '6pm', '8am'],
+    answer: '11am',
+  },
+  {
+    id: 22,
+    level: 'a1',
+    question: 'Read the instruction: "Mix the ingredients together. Then pour into a tin and bake for 30 minutes." What should you do FIRST?',
+    options: ['Bake for 30 minutes', 'Pour into a tin', 'Mix the ingredients', 'Heat the oven'],
+    answer: 'Mix the ingredients',
+  },
+  {
+    id: 23,
+    level: 'a1',
+    question: 'Read the sign: "No food or drink allowed in this area." What does this sign mean?',
+    options: [
+      'You must buy food here.',
+      'You cannot eat or drink here.',
+      'Food is provided for free.',
+      'Drinks are available nearby.',
+    ],
+    answer: 'You cannot eat or drink here.',
+  },
+  {
+    id: 24,
+    level: 'a1',
+    question: 'Which sentence is correct?',
+    options: [
+      'She have two cats.',
+      'She has two cats.',
+      'She are having two cats.',
+      'She having two cats.',
+    ],
+    answer: 'She has two cats.',
+  },
+
+  // ── A2 — Short email & advertisement reading ───────────────────────────────
+  {
+    id: 25,
+    level: 'a2',
+    question: 'Read this email: "Dear Maria, I cannot come to the meeting tomorrow. I have a doctor\'s appointment at that time. Sorry for the inconvenience. — Tom." Why can Tom not attend the meeting?',
+    options: [
+      'He forgot about the meeting.',
+      'He has a medical appointment.',
+      'He is travelling abroad.',
+      'He is not interested in the topic.',
+    ],
+    answer: 'He has a medical appointment.',
+  },
+  {
+    id: 26,
+    level: 'a2',
+    question: 'Choose the correct linking word: "I wanted to go to the beach; ___, it started to rain, so we stayed home."',
+    options: ['however', 'so', 'because', 'and'],
+    answer: 'however',
+  },
+  {
+    id: 27,
+    level: 'a2',
+    question: 'Read this advertisement: "English classes for adults. Tuesday and Thursday evenings, 6–8pm. GHS 50 per month. Free for students under 18." How much does an adult pay each month?',
+    options: ['Nothing', 'GHS 18', 'GHS 50', 'GHS 100'],
+    answer: 'GHS 50',
+  },
+  {
+    id: 28,
+    level: 'a2',
+    question: 'Choose the word closest in meaning to "purchase".',
+    options: ['sell', 'lend', 'buy', 'return'],
+    answer: 'buy',
+  },
+
+  // ── B1 — Short passage & academic collocations ────────────────────────────
+  {
+    id: 29,
+    level: 'b1',
+    question: 'Read this passage: "Research shows that students who take short breaks every 45 minutes perform better on tests than those who study without stopping. A brief rest allows the brain to process and retain information more effectively." According to the passage, what is the main benefit of taking breaks?',
+    options: [
+      'It makes studying more enjoyable.',
+      'It allows the brain to process information more effectively.',
+      'It reduces the total time needed to study.',
+      'It prevents students from feeling stressed.',
+    ],
+    answer: 'It allows the brain to process information more effectively.',
+  },
+  {
+    id: 30,
+    level: 'b1',
+    question: 'Choose the best word to complete this sentence: "The scientist conducted extensive ___ before publishing her findings."',
+    options: ['research', 'travel', 'discussion', 'preparation'],
+    answer: 'research',
+  },
+  {
+    id: 31,
+    level: 'b1',
+    question: 'Choose the correct linking word: "She studied very hard for the exam. ___, she did not pass."',
+    options: ['As a result', 'Nevertheless', 'Furthermore', 'In addition'],
+    answer: 'Nevertheless',
+  },
+  {
+    id: 32,
+    level: 'b1',
+    question: 'Choose the correct form to complete the sentence: "The results of the study ___ in an international journal last month."',
+    options: ['published', 'were published', 'have published', 'are publishing'],
+    answer: 'were published',
+  },
+
+  // ── B2 — Academic extracts & word formation ───────────────────────────────
+  {
+    id: 33,
+    level: 'b2',
+    question: 'Read this extract: "Despite significant advances in renewable energy technology, the global transition away from fossil fuels remains slow, largely due to economic factors and entrenched political interests." What does the passage suggest is the main obstacle to this transition?',
+    options: [
+      'A lack of renewable energy technology',
+      'Economic and political factors',
+      'Strong public opposition to change',
+      'Insufficient environmental regulations',
+    ],
+    answer: 'Economic and political factors',
+  },
+  {
+    id: 34,
+    level: 'b2',
+    question: 'Choose the word closest in meaning to "predominant".',
+    options: ['rare', 'minor', 'dominant', 'recent'],
+    answer: 'dominant',
+  },
+  {
+    id: 35,
+    level: 'b2',
+    question: 'Choose the correct word form: "The ___ of the experiment produced unexpected results." (Base word: CONCLUDE)',
+    options: ['concluding', 'conclusion', 'conclusive', 'conclusively'],
+    answer: 'conclusion',
+  },
+  {
+    id: 36,
+    level: 'b2',
+    question: 'Which sentence uses formal written English correctly?',
+    options: [
+      'Not only the temperature increased, but also the pressure.',
+      'Not only did the temperature increase, but the pressure also rose.',
+      'Not only the temperature did increase, but also the pressure rose.',
+      'Not only increased the temperature, but also rose the pressure.',
+    ],
+    answer: 'Not only did the temperature increase, but the pressure also rose.',
+  },
+
+  // ── C1 — Advanced inference & register ───────────────────────────────────
+  {
+    id: 37,
+    level: 'c1',
+    question: 'Read this extract: "The author\'s prose is characterised by an almost pathological precision; every word appears weighed, every comma deliberate. Yet this very meticulousness can become its own impediment, occasionally rendering passages opaque where clarity was presumably intended." What criticism of the author\'s style does the passage imply?',
+    options: [
+      'The writing is too simple for most readers.',
+      'Excessive carefulness can make the writing difficult to understand.',
+      'The writing lacks sufficient factual detail.',
+      'The register is inappropriate for the intended audience.',
+    ],
+    answer: 'Excessive carefulness can make the writing difficult to understand.',
+  },
+  {
+    id: 38,
+    level: 'c1',
+    question: 'Choose the word that best completes the sentence: "The diplomat\'s response was deliberately ___, carefully avoiding commitment to any particular position."',
+    options: ['candid', 'ambiguous', 'resolute', 'concise'],
+    answer: 'ambiguous',
+  },
+  {
+    id: 39,
+    level: 'c1',
+    question: 'Which sentence is grammatically correct in formal academic writing?',
+    options: [
+      'Were the data analysed more carefully, different conclusions might emerge.',
+      'If the data would be analysed more carefully, different conclusions may emerge.',
+      'Unless the data are not analysed more carefully, different conclusions may emerge.',
+      'When the data would be analysed, different conclusions are emerging.',
+    ],
+    answer: 'Were the data analysed more carefully, different conclusions might emerge.',
+  },
+  {
+    id: 40,
+    level: 'c1',
+    question: 'In formal academic writing, which word is the most appropriate substitute for "show"?',
+    options: ['prove', 'demonstrate', 'tell', 'reveal'],
+    answer: 'demonstrate',
+  },
 ]
 
 export const levelResults = {
@@ -244,9 +436,9 @@ export const levelResults = {
 }
 
 export function getLevel(score) {
-  if (score <= 4) return 'a1'
-  if (score <= 8) return 'a2'
-  if (score <= 12) return 'b1'
-  if (score <= 16) return 'b2'
+  if (score <= 8)  return 'a1'
+  if (score <= 16) return 'a2'
+  if (score <= 24) return 'b1'
+  if (score <= 32) return 'b2'
   return 'c1'
 }

@@ -121,13 +121,13 @@ export default function EnglishQuizPage() {
               </h2>
               <p className="text-base leading-relaxed mb-6"
                 style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
-                You will be shown 20 multiple-choice questions covering grammar, vocabulary, and sentence structure
-                across five CEFR proficiency levels. Choose the best answer for each question. At the end, we will
-                tell you your exact English level and recommend the right VSEC course for you.
+                You will be shown 40 multiple-choice questions covering grammar, vocabulary, sentence structure,
+                and IELTS-style reading tasks across five CEFR proficiency levels. Choose the best answer for each
+                question. At the end, we will tell you your exact English level and recommend the right VSEC course for you.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-8">
-                {[['20', 'Questions'], ['~7 min', 'Duration'], ['Instant', 'Result']].map(([val, lbl]) => (
+                {[['40', 'Questions'], ['~14 min', 'Duration'], ['Instant', 'Result']].map(([val, lbl]) => (
                   <div key={lbl} className="px-5 py-3 rounded-xl"
                     style={{ backgroundColor: 'var(--color-blue-tint)' }}>
                     <p className="text-lg font-black" style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}>{val}</p>
