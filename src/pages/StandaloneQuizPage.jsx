@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, GraduationCap, ExternalLink } from 'lucide-react'
+import { ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, GraduationCap, ExternalLink, User, Mail } from 'lucide-react'
 import { questions, levelResults, getLevel } from '../data/quizQuestions'
 
 const FEEDBACK_DELAY = 900
+const FORMSPREE_URL = 'https://formspree.io/f/mykazavk'
 
 function BrandedHeader() {
   return (
@@ -25,7 +26,9 @@ function BrandedHeader() {
 }
 
 export default function StandaloneQuizPage() {
-  const [phase, setPhase] = useState('intro')
+  const [phase, setPhase] = useState('intro')   // 'intro' | 'collect' | 'quiz' | 'result'
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
   const [selected, setSelected] = useState(null)
@@ -35,12 +38,34 @@ export default function StandaloneQuizPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [phase, current])
 
-  function startQuiz() {
+  function handleCollect(e) {
+    e.preventDefault()
+    setUserName(e.target.elements['fullName'].value.trim())
+    setUserEmail(e.target.elements['email'].value.trim())
     setCurrent(0)
     setScore(0)
     setSelected(null)
     setLocked(false)
     setPhase('quiz')
+  }
+
+  function sendResults(name, email, finalScore) {
+    const level = levelResults[getLevel(finalScore)]
+    const completedAt = new Date().toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'medium' })
+    fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `English Test Result — ${name}`,
+        'Full Name': name,
+        'Participant Email': email,
+        'Score': `${finalScore} / ${questions.length}`,
+        'CEFR Level': level.badge,
+        'Recommended Course': level.recommendedCourse,
+        'Program': level.programName,
+        'Completed At': completedAt,
+      }),
+    }).catch(() => {})
   }
 
   function handleSelect(option) {
@@ -58,6 +83,7 @@ export default function StandaloneQuizPage() {
         if (correct) setScore(newScore)
       } else {
         if (correct) setScore(newScore)
+        sendResults(userName, userEmail, newScore)
         setPhase('result')
       }
     }, FEEDBACK_DELAY)
@@ -128,13 +154,107 @@ export default function StandaloneQuizPage() {
                   ))}
                 </div>
 
-                <button onClick={startQuiz} className="btn-primary text-base px-10 py-4 rounded-xl">
+                <button onClick={() => setPhase('collect')} className="btn-primary text-base px-10 py-4 rounded-xl">
                   Start Quiz
                   <ArrowRight size={18} />
                 </button>
               </div>
             </div>
           </section>
+        </main>
+      </>
+    )
+  }
+
+  // ── Collect ───────────────────────────────────────────────────────────────
+  if (phase === 'collect') {
+    return (
+      <>
+        <BrandedHeader />
+        <main className="min-h-screen bg-white pt-20 pb-16">
+          <div className="section max-w-2xl">
+            <div className="rounded-2xl p-8 md:p-12 border"
+              style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
+
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                style={{ backgroundColor: 'var(--color-blue-tint)' }}>
+                <User size={26} style={{ color: 'var(--color-primary)' }} strokeWidth={1.75} />
+              </div>
+
+              <h2 className="text-2xl font-black mb-2"
+                style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)' }}>
+                Before You Begin
+              </h2>
+              <p className="text-sm mb-8"
+                style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
+                Enter your details so we can send your results to VSEC College.
+              </p>
+
+              <form onSubmit={handleCollect} className="space-y-5">
+                <div>
+                  <label className="block text-sm font-semibold mb-1.5"
+                    style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text)' }}>
+                    Full Name <span style={{ color: 'var(--color-gold)' }}>*</span>
+                  </label>
+                  <div className="relative">
+                    <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                      style={{ color: 'var(--color-text-muted)' }} />
+                    <input
+                      type="text"
+                      name="fullName"
+                      required
+                      placeholder="e.g. Kwame Mensah"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border text-sm outline-none transition-colors"
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        borderColor: 'var(--color-border)',
+                        backgroundColor: 'var(--color-surface)',
+                        color: 'var(--color-text)',
+                      }}
+                      onFocus={e => { e.target.style.borderColor = 'var(--color-primary)' }}
+                      onBlur={e => { e.target.style.borderColor = 'var(--color-border)' }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-1.5"
+                    style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text)' }}>
+                    Email Address <span style={{ color: 'var(--color-gold)' }}>*</span>
+                  </label>
+                  <div className="relative">
+                    <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                      style={{ color: 'var(--color-text-muted)' }} />
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="e.g. kwame@example.com"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border text-sm outline-none transition-colors"
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        borderColor: 'var(--color-border)',
+                        backgroundColor: 'var(--color-surface)',
+                        color: 'var(--color-text)',
+                      }}
+                      onFocus={e => { e.target.style.borderColor = 'var(--color-primary)' }}
+                      onBlur={e => { e.target.style.borderColor = 'var(--color-border)' }}
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" className="btn-primary w-full text-base py-4 rounded-xl justify-center mt-2">
+                  Begin Test
+                  <ArrowRight size={18} />
+                </button>
+
+                <p className="text-xs text-center pt-1"
+                  style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
+                  Your details are used only to send your results to VSEC College.
+                </p>
+              </form>
+            </div>
+          </div>
         </main>
       </>
     )
@@ -311,7 +431,7 @@ export default function StandaloneQuizPage() {
                   <ExternalLink size={16} />
                 </Link>
                 <button
-                  onClick={startQuiz}
+                  onClick={() => setPhase('collect')}
                   className="btn-outline-white text-base px-8 py-4 rounded-xl justify-center inline-flex items-center gap-2"
                   style={{ color: 'var(--color-primary)', borderColor: 'var(--color-border)' }}
                   onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--color-blue-tint)' }}
