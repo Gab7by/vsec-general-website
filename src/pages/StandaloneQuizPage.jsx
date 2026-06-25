@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, GraduationCap, ExternalLink, User, Mail, Phone } from 'lucide-react'
 import { questions, levelResults, getLevel } from '../data/quizQuestions'
 
@@ -452,13 +451,15 @@ export default function StandaloneQuizPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
-                <Link
-                  to={`/enroll?program=${result.programId}`}
+                <a
+                  href={`https://vseccollege.com/enroll?program=${result.programId}`}
                   className="btn-primary text-base px-8 py-4 rounded-xl justify-center"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Apply at VSEC College
                   <ExternalLink size={16} />
-                </Link>
+                </a>
                 <button
                   onClick={() => setPhase('collect')}
                   className="btn-outline-white text-base px-8 py-4 rounded-xl justify-center inline-flex items-center gap-2"
@@ -510,7 +511,7 @@ export default function StandaloneQuizPage() {
               <p className="text-xs text-center"
                 style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }}>
                 Powered by{' '}
-                <a href="https://vseccollege.vercel.app" target="_blank" rel="noreferrer"
+                <a href="https://vseccollege.com" target="_blank" rel="noreferrer"
                   style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
                   VSEC College
                 </a>

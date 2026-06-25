@@ -11,6 +11,12 @@ import StandaloneQuizPage from './pages/StandaloneQuizPage'
 
 function AppLayout() {
   const location = useLocation()
+  const isQuizSubdomain = window.location.hostname === 'englishtest.vseccollege.com'
+
+  if (isQuizSubdomain) {
+    return <StandaloneQuizPage />
+  }
+
   const isStandalone = location.pathname === '/quiz'
 
   return (
