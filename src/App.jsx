@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage'
 import EnrollPage from './pages/EnrollPage'
 import EnglishQuizPage from './pages/EnglishQuizPage'
 import StandaloneQuizPage from './pages/StandaloneQuizPage'
+import AdminApplicantsPage from './pages/AdminApplicantsPage'
 
 function AppLayout() {
   const location = useLocation()
@@ -30,6 +31,7 @@ function AppLayout() {
         <Route path="/enroll" element={<EnrollPage />} />
         <Route path="/english-quiz" element={<EnglishQuizPage />} />
         <Route path="/quiz" element={<StandaloneQuizPage />} />
+        <Route path="/admin/applicants" element={<AdminApplicantsPage />} />
       </Routes>
       {!isStandalone && <Footer />}
     </>
