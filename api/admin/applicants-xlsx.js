@@ -1,26 +1,11 @@
-import { createHash, timingSafeEqual } from 'node:crypto'
 import { getForm } from '../../src/lib/applicationForms.js'
 import { rebuildWorkbook, XLSX_TYPE } from '../_lib/workbook.js'
-
-function passwordMatches(given) {
-  const expected = process.env.ADMIN_PASSWORD?.trim()
-  if (!expected || !given) return false
-  const a = createHash('sha256').update(given).digest()
-  const b = createHash('sha256').update(expected).digest()
-  return timingSafeEqual(a, b)
-}
+import { requireAdmin, allowMethods } from '../_lib/adminAuth.js'
 
 export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    res.setHeader('Allow', 'GET')
-    return res.status(405).json({ error: 'Method not allowed.' })
-  }
-
-  const auth = req.headers.authorization ?? ''
-  const token = auth.startsWith('Bearer ') ? auth.slice(7) : ''
-  if (!passwordMatches(token)) {
-    return res.status(401).json({ error: 'Incorrect password.' })
-  }
+  if (!allowMethods(req, res, ['GET'])) return
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
 
   const form = getForm(req.query?.type)
   if (!form) return res.status(400).json({ error: 'Unknown applicant type.' })

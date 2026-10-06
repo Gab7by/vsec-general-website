@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/admin/send-letter.js": {
+      "includeFiles": "public/vsec-logo.png"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",

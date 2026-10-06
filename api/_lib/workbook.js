@@ -27,6 +27,7 @@ function toCell(column, value) {
     case 'datetime': return new Date(value)
     case 'boolean': return value ? 'Yes' : 'No'
     case 'number': return Number(value)
+    case 'status': return String(value).charAt(0).toUpperCase() + String(value).slice(1)
     default: return value
   }
 }

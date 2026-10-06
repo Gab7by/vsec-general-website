@@ -127,6 +127,8 @@ export function excelColumns(form) {
   return [
     { key: 'application_number', header: 'Application No.', width: 22 },
     { key: 'created_at', header: 'Submitted At', width: 20, type: 'datetime' },
+    { key: 'status', header: 'Admission Status', width: 16, type: 'status' },
+    { key: 'admission_letter_sent_at', header: 'Admission Letter Sent', width: 20, type: 'datetime' },
     ...allFields(form).map(f => ({
       key: f.name,
       header: f.excelLabel ?? f.label,
