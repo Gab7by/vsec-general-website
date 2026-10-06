@@ -8,6 +8,14 @@ const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 
 export const authConfigured = Boolean(url && key)
 
+// Read before the client is created: Supabase consumes and clears auth hashes. When an
+// invite/reset link is expired or already used, Supabase redirects here with
+// #error=access_denied&error_code=otp_expired&error_description=…
+const authHash = new URLSearchParams(typeof window === 'undefined' ? '' : window.location.hash.slice(1))
+export const authLinkError = authHash.get('error_code') || authHash.get('error')
+  ? { code: authHash.get('error_code') || authHash.get('error'), description: authHash.get('error_description') ?? '' }
+  : null
+
 export const supabase = authConfigured
   ? createClient(url, key, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } })
   : null
@@ -31,6 +39,20 @@ export function useAdminSession() {
   }, [])
 
   return state
+}
+
+/** Emails a link that opens /admin/set-password. Returns { ok, message }. */
+export async function requestPasswordLink(email) {
+  const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+    redirectTo: `${window.location.origin}/admin/set-password`,
+  })
+  if (!error) {
+    return { ok: true, message: 'If that email belongs to an admin account, a link to set your password is on its way. Check your spam folder too.' }
+  }
+  if (error.status === 429 || error.code === 'over_email_send_rate_limit') {
+    return { ok: false, message: 'Too many emails have been sent recently. Please wait about an hour and try again, or ask the site administrator for help.' }
+  }
+  return { ok: false, message: 'Could not send the email. Please try again later.' }
 }
 
 export async function signOut() {

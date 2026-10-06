@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { Loader2, LogOut, ShieldAlert, Users } from 'lucide-react'
-import { authConfigured, signOut, supabase, useAdminSession } from '../../lib/adminAuth'
+import { authConfigured, requestPasswordLink, signOut, supabase, useAdminSession } from '../../lib/adminAuth'
 import { adminFetch } from '../../lib/adminApi'
 import { labelClass, labelStyle } from '../../lib/adminUi'
 import CenteredPanel from '../../components/admin/CenteredPanel'
@@ -29,12 +29,8 @@ function SignIn() {
       const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password })
       setStatus(error ? { state: 'error', message: 'Incorrect email or password.' } : { state: 'idle', message: '' })
     } else {
-      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-        redirectTo: `${window.location.origin}/admin/set-password`,
-      })
-      setStatus(error
-        ? { state: 'error', message: 'Could not send the reset email. Please try again later.' }
-        : { state: 'done', message: 'If that email belongs to an admin account, a password reset link is on its way.' })
+      const result = await requestPasswordLink(email)
+      setStatus({ state: result.ok ? 'done' : 'error', message: result.message })
     }
   }
 

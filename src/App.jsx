@@ -18,8 +18,13 @@ const AdminLetterPage = lazy(() => import('./pages/admin/AdminLetterPage'))
 const AdminSetPasswordPage = lazy(() => import('./pages/admin/AdminSetPasswordPage'))
 
 // Supabase invite / password-recovery links land on the Site URL with the token in the
-// hash; send them to the page that lets the admin choose a password.
-if (/[#&]type=(invite|recovery)/.test(window.location.hash) && window.location.pathname !== '/admin/set-password') {
+// hash — or, if the link was expired or already used, with an error_code. Send both to
+// the page that lets the admin choose a password (or request a fresh link).
+const authHash = window.location.hash
+if (
+  (/[#&]type=(invite|recovery|magiclink|signup)\b/.test(authHash) || /[#&]error_code=/.test(authHash)) &&
+  window.location.pathname !== '/admin/set-password'
+) {
   window.location.replace(`/admin/set-password${window.location.hash}`)
 }
 
