@@ -49,7 +49,7 @@ export function buildLetterDraft(type, application, today = new Date().toISOStri
     [`${givenNames} ${familyName}`, location, a.email].filter(Boolean).join('\n'),
     `Dear ${givenNames} ${familyName},`,
     `OFFER OF ADMISSION – ${String(a.programme).toUpperCase()}`,
-    `We are pleased to inform you that, following a careful review of your application, you have been offered admission to ${SCHOOL.name} to study the ${programme} programme.`,
+    `We are pleased to inform you that, following a careful review of your application, you have been offered admission to ${SCHOOL.name} to study the ${/programme$/i.test(programme) ? programme : `${programme} programme`}.`,
     [
       'The details of your admission are as follows:',
       `• Programme: ${programme}`,

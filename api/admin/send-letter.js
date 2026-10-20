@@ -21,10 +21,12 @@ function escapeHtml(value) {
 function coverEmail({ application, signatoryName, signatoryTitle }) {
   const name = titleCase(application.given_names)
   const programme = titleCase(application.programme)
+  // International programme names already end in 'Programme'.
+  const suffix = /programme$/i.test(programme) ? '' : ' programme'
   const text = [
     `Dear ${name},`,
     '',
-    `Congratulations! Please find attached your official letter of admission to ${SCHOOL.name} for the ${programme} programme (Application No. ${application.application_number}).`,
+    `Congratulations! Please find attached your official letter of admission to ${SCHOOL.name} for the ${programme}${suffix} (Application No. ${application.application_number}).`,
     '',
     'Please read the letter carefully and follow the instructions in it to accept your offer. If you have any questions, simply reply to this email.',
     '',
@@ -42,7 +44,7 @@ function coverEmail({ application, signatoryName, signatoryTitle }) {
     </div>
     <div style="padding:28px;font-size:15px;line-height:1.6">
       <p style="margin:0 0 16px">Dear ${escapeHtml(name)},</p>
-      <p style="margin:0 0 16px"><strong style="color:#0B3D91">Congratulations!</strong> Please find attached your official letter of admission to ${SCHOOL.name} for the <strong>${escapeHtml(programme)}</strong> programme (Application No. ${escapeHtml(application.application_number)}).</p>
+      <p style="margin:0 0 16px"><strong style="color:#0B3D91">Congratulations!</strong> Please find attached your official letter of admission to ${SCHOOL.name} for the <strong>${escapeHtml(programme)}</strong>${suffix} (Application No. ${escapeHtml(application.application_number)}).</p>
       <p style="margin:0 0 16px">Please read the letter carefully and follow the instructions in it to accept your offer. If you have any questions, simply reply to this email.</p>
       <p style="margin:24px 0 0">Warm regards,<br><strong>${escapeHtml(signatoryName)}</strong>${signatoryTitle ? `<br>${escapeHtml(signatoryTitle)}` : ''}</p>
     </div>

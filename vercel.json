@@ -1,7 +1,10 @@
 {
   "functions": {
     "api/admin/send-letter.js": {
-      "includeFiles": "public/vsec-logo.png"
+      "includeFiles": "{public/vsec-logo.png,api/_assets/signature.png}"
+    },
+    "api/admin/signature.js": {
+      "includeFiles": "api/_assets/signature.png"
     }
   },
   "rewrites": [

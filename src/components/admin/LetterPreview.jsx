@@ -1,8 +1,10 @@
 import { parseLetterBody } from '../../lib/admissionLetter'
 import { SCHOOL } from '../../lib/admissions'
+import { useSignatureUrl } from '../../lib/useSignatureUrl'
 
 /** On-screen preview that mirrors the PDF layout in api/_lib/letterPdf.js. */
 export default function LetterPreview({ body, signatoryName, signatoryTitle }) {
+  const signatureUrl = useSignatureUrl()
   return (
     <div className="bg-white rounded-xl overflow-hidden border" style={{ borderColor: 'var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
       <div className="flex items-center gap-4 px-6 py-5" style={{ backgroundColor: 'var(--color-primary)', borderBottom: '4px solid var(--color-gold)' }}>
@@ -37,7 +39,11 @@ export default function LetterPreview({ body, signatoryName, signatoryTitle }) {
             </p>
           )
         })}
-        <div className="mt-10">
+        <div className={signatureUrl ? 'mt-1' : 'mt-10'}>
+          {signatureUrl && (
+            // Matches the PDF: ~2.2 cm tall, slightly overlapping the rule like a pen signature.
+            <img src={signatureUrl} alt="Signature" className="block h-[78px] w-auto ml-2 -mb-2 relative" draggable={false} />
+          )}
           <div className="w-40 border-t mb-1" style={{ borderColor: '#64748B' }} />
           <p className="font-bold">{signatoryName || 'Admissions Office'}</p>
           {signatoryTitle && <p>{signatoryTitle}</p>}

@@ -12,18 +12,25 @@ const MUTED = rgb(0.39, 0.45, 0.55)
 const PAGE = { width: 595.28, height: 841.89 } // A4
 const MARGIN_X = 64
 const BODY_SIZE = 11
-const LINE = 16
-const FOOTER_SPACE = 70
+const LINE = 15
+const FOOTER_SPACE = 64
 
-let logoBytes
-async function loadLogo() {
-  if (logoBytes !== undefined) return logoBytes
-  try {
-    logoBytes = await readFile(path.join(process.cwd(), 'public', 'vsec-logo.png'))
-  } catch {
-    logoBytes = null // the letter still renders without the logo
+const SIGNATURE_HEIGHT = 62 // pt (~2.2 cm); width follows the image's aspect ratio
+
+// Bundled with the function via vercel.json `includeFiles`. The signature is kept out of
+// public/ so it is never downloadable from the website.
+export const ASSETS = {
+  logo: ['public', 'vsec-logo.png'],
+  signature: ['api', '_assets', 'signature.png'],
+}
+
+const assetCache = new Map()
+export async function loadAsset(name) {
+  if (!assetCache.has(name)) {
+    // A missing asset never blocks a letter — it just renders without it.
+    assetCache.set(name, readFile(path.join(process.cwd(), ...ASSETS[name])).catch(() => null))
   }
-  return logoBytes
+  return assetCache.get(name)
 }
 
 // Ghanaian (Akan/Ewe/Ga) letters outside WinAnsi, mapped to their nearest Latin letter.
@@ -82,8 +89,9 @@ export async function buildLetterPdf({ subject, body, signatoryName, signatoryTi
   const regular = await pdf.embedFont(StandardFonts.Helvetica)
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold)
   const clean = makeSanitizer(regular)
-  const logoPng = await loadLogo()
+  const [logoPng, signaturePng] = await Promise.all([loadAsset('logo'), loadAsset('signature')])
   const logo = logoPng ? await pdf.embedPng(logoPng) : null
+  const signature = signaturePng ? await pdf.embedPng(signaturePng) : null
 
   const contentWidth = PAGE.width - MARGIN_X * 2
   let page
@@ -104,12 +112,12 @@ export async function buildLetterPdf({ subject, body, signatoryName, signatoryTi
     }
     page.drawText('VSEC COLLEGE', { x: textX, y: PAGE.height - 50, size: 22, font: bold, color: rgb(1, 1, 1) })
     page.drawText('Office of Admissions', { x: textX, y: PAGE.height - 70, size: 11, font: regular, color: GOLD })
-    y = PAGE.height - bandHeight - 48
+    y = PAGE.height - bandHeight - 36
   }
 
   function drawContinuationHeader() {
     page.drawRectangle({ x: 0, y: PAGE.height - 6, width: PAGE.width, height: 6, color: BLUE })
-    page.drawText(clean(`${SCHOOL.name} – ${subject}`).slice(0, 110), { x: MARGIN_X, y: PAGE.height - 34, size: 9, font: regular, color: MUTED })
+    page.drawText(clean(subject.includes(SCHOOL.name) ? subject : `${SCHOOL.name} – ${subject}`).slice(0, 110), { x: MARGIN_X, y: PAGE.height - 34, size: 9, font: regular, color: MUTED })
     page.drawRectangle({ x: MARGIN_X, y: PAGE.height - 42, width: contentWidth, height: 1, color: GOLD })
     y = PAGE.height - 70
   }
@@ -134,7 +142,15 @@ export async function buildLetterPdf({ subject, body, signatoryName, signatoryTi
 
   newPage()
 
-  for (const block of parseLetterBody(body)) {
+  const sigHeight = signature ? SIGNATURE_HEIGHT : 34
+  const signatureBlockHeight = sigHeight + LINE * 3 + 12
+  const blocks = parseLetterBody(body)
+
+  blocks.forEach((block, index) => {
+    // Keep a short closing line ("Yours sincerely,") on the same page as the signature.
+    const isClosing = index === blocks.length - 1 && block.kind === 'paragraph' && block.lines.length === 1 && block.lines[0].length <= 40
+    if (isClosing) ensureSpace(LINE + 9 + signatureBlockHeight)
+
     if (block.kind === 'heading') {
       const lines = wrap(clean(block.lines[0]), bold, 12, contentWidth)
       ensureSpace(LINE * lines.length + 6)
@@ -151,11 +167,18 @@ export async function buildLetterPdf({ subject, body, signatoryName, signatoryTi
       for (const line of block.lines) drawLines(wrap(clean(line), regular, BODY_SIZE, contentWidth))
     }
     y -= 9 // paragraph spacing
-  }
+  })
 
-  // Signature block (space left for a handwritten signature on printed copies).
-  ensureSpace(LINE * 3 + 40)
-  y -= 34
+  // Signature block: official signature above a rule, then the signatory name and title.
+  // Space for the whole block is reserved up front so it never splits across pages.
+  ensureSpace(signatureBlockHeight)
+  if (signature) {
+    const sigWidth = (signature.width / signature.height) * SIGNATURE_HEIGHT
+    page.drawImage(signature, { x: MARGIN_X + 6, y: y + LINE - 6 - SIGNATURE_HEIGHT + 4, width: sigWidth, height: SIGNATURE_HEIGHT })
+    y -= SIGNATURE_HEIGHT - 4
+  } else {
+    y -= 34
+  }
   page.drawRectangle({ x: MARGIN_X, y: y + LINE - 2, width: 160, height: 0.75, color: MUTED })
   drawLines([clean(signatoryName || 'Admissions Office')], { font: bold })
   if (signatoryTitle) drawLines(wrap(clean(signatoryTitle), regular, BODY_SIZE, contentWidth))
