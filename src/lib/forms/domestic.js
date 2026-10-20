@@ -1,6 +1,6 @@
 // Mirrors VSEC_Student_Application_Form_Domestic.docx (Domestic / Ghanaian applicants).
 import { countries } from '../../data/countries.js'
-import { DECLARATION_TEXT, EDUCATION_LEVELS, ENGLISH_BACKGROUND, GENDERS } from './shared.js'
+import { DECLARATION_TEXT, ENGLISH_BACKGROUND, GENDERS, educationFields, personalStatementSection } from './shared.js'
 
 const CORPORATE = 'Corporate-Sponsored Learner'
 const AGENT = 'Agent/Recruiter'
@@ -74,12 +74,7 @@ export const domestic = {
     },
     {
       title: 'Educational Background',
-      fields: [
-        { name: 'education_level', label: 'Highest Level of Education Completed', type: 'select', required: true, options: EDUCATION_LEVELS },
-        { name: 'institution_name', label: 'Name of Institution', type: 'text', required: true },
-        { name: 'study_country', label: 'Country of Study', type: 'select', required: true, half: true, options: countries, defaultValue: 'Ghana' },
-        { name: 'year_completed', label: 'Year Completed', type: 'number', required: true, half: true, rule: 'year', placeholder: 'YYYY' },
-      ],
+      fields: educationFields({ countries, defaultCountry: 'Ghana' }),
     },
     {
       title: 'English Language Proficiency',
@@ -112,6 +107,7 @@ export const domestic = {
         { name: 'medical_needs', label: 'Any medical conditions or accessibility needs we should be aware of?', type: 'textarea', max: 1000, excelLabel: 'Medical / Accessibility Needs' },
       ],
     },
+    personalStatementSection,
     {
       title: 'How Did You Hear About VSEC College?',
       fields: [

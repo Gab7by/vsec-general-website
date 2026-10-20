@@ -121,10 +121,18 @@ function Field({ field, value, error, required, onChange, idPrefix }) {
     )
   } else if (field.type === 'textarea') {
     control = (
-      <textarea {...common} rows={3} value={value} maxLength={field.max} placeholder={field.placeholder}
-        autoComplete={field.autoComplete ?? 'off'}
-        onChange={e => onChange(field.name, e.target.value)}
-        className="input resize-y uppercase placeholder:normal-case" style={invalidStyle} />
+      <>
+        <textarea {...common} rows={field.rows ?? 3} value={value} maxLength={field.max} placeholder={field.placeholder}
+          autoComplete={field.autoComplete ?? 'off'}
+          onChange={e => onChange(field.name, e.target.value)}
+          className={`input resize-y ${field.preserveCase ? '' : 'uppercase placeholder:normal-case'}`}
+          style={{ ...invalidStyle, ...(field.rows > 4 ? { lineHeight: 1.6 } : null) }} />
+        {field.max >= 1000 && (
+          <p className="text-xs mt-1 text-right" style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-muted)' }} aria-live="polite">
+            {value.length.toLocaleString()} / {field.max.toLocaleString()} characters
+          </p>
+        )}
+      </>
     )
   } else {
     const isText = field.type === 'text'

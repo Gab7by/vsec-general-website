@@ -113,7 +113,8 @@ export function normalizeApplication(form, data, today = todayISO()) {
     if (field.type === 'checkbox') { row[field.name] = visible ? value === true : null; continue }
     value = visible && typeof value === 'string' ? value.trim() : ''
     if (field.type === 'email') value = value.toLowerCase()
-    else if (['text', 'textarea'].includes(field.type)) value = value.toUpperCase()
+    // Long free-text answers (e.g. the essay) keep the applicant's own capitalisation.
+    else if (['text', 'textarea'].includes(field.type) && !field.preserveCase) value = value.toUpperCase()
     else if (field.type === 'tel') value = value.replace(/\s+/g, ' ')
     if (field.type === 'number') value = value === '' ? '' : Number(value)
     if (field.autoToday) value = today

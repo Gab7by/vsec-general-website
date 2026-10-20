@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle2, FileSignature, Loader2, Mail, Phone, Send } fr
 import { adminFetch, formatDate } from '../../lib/adminApi'
 import { LETTER_STATUSES, MANUAL_STATUSES, statusInfo } from '../../lib/admissions'
 import { titleCase } from '../../lib/admissionLetter'
-import { allFields, isSectionVisible } from '../../lib/applicationCore'
+import { allFields, isFieldVisible, isSectionVisible } from '../../lib/applicationCore'
 import { getForm } from '../../lib/applicationForms'
 import { headingStyle, labelClass, labelStyle } from '../../lib/adminUi'
 import AdminCard from '../../components/admin/AdminCard'
@@ -28,7 +28,7 @@ function ApplicationSections({ form, application }) {
         {section.title}
       </h2>
       <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-        {fields.filter(f => f.section === section).map(field => (
+        {fields.filter(f => f.section === section && isFieldVisible(f, application)).map(field => (
           <div key={field.name} className={field.type === 'textarea' || !field.half ? 'sm:col-span-2' : ''}>
             <dt className="text-xs font-semibold uppercase tracking-wide mb-0.5" style={{ color: 'var(--color-text-muted)', fontFamily: 'var(--font-heading)' }}>
               {field.excelLabel ?? field.label}

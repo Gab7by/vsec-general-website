@@ -1,6 +1,6 @@
 // Mirrors VSEC_International_Student_Application_Form.docx.
 import { countries } from '../../data/countries.js'
-import { DECLARATION_TEXT, EDUCATION_LEVELS, ENGLISH_BACKGROUND } from './shared.js'
+import { DECLARATION_TEXT, ENGLISH_BACKGROUND, educationFields, personalStatementSection } from './shared.js'
 
 const AGENT = 'Agent/Recruiter'
 const OTHER = 'Other'
@@ -56,12 +56,7 @@ export const international = {
     },
     {
       title: 'Educational Background',
-      fields: [
-        { name: 'education_level', label: 'Highest Level of Education Completed', type: 'select', required: true, options: EDUCATION_LEVELS },
-        { name: 'institution_name', label: 'Name of Institution', type: 'text', required: true },
-        { name: 'study_country', label: 'Country of Study', type: 'select', required: true, half: true, options: countries },
-        { name: 'year_completed', label: 'Year Completed', type: 'number', required: true, half: true, rule: 'year', placeholder: 'YYYY' },
-      ],
+      fields: educationFields({ countries }),
     },
     {
       title: 'English Language Background',
@@ -77,6 +72,7 @@ export const international = {
         { name: 'medical_needs', label: 'Do you have any medical conditions or accessibility needs we should be aware of?', type: 'textarea', max: 1000, excelLabel: 'Medical / Accessibility Needs' },
       ],
     },
+    personalStatementSection,
     {
       title: 'How Did You Hear About VSEC College?',
       fields: [
